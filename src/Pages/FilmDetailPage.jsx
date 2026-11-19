@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router';
 import filmServices from '../Services/filmServices';
 import reservationServices from '../Services/reservationServices';
 
@@ -38,6 +39,9 @@ const FilmDetailPage = () => {
 
     return (
         <main className="container">
+            <Link to="/" className="btn btn-primary btn-sm">
+                <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>Retour
+            </Link>
             <h1 className="h2">{film.fi_title}</h1>
             <p className="text-muted">{film.fi_genre} · {film.fi_duration} min · sortie le {String(film.fi_release_date).slice(0, 10)}</p>
             <p>{film.fi_description}</p>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 import roomServices from '../Services/roomServices';
 
 const RoomsPage = () => {
@@ -19,6 +20,9 @@ const RoomsPage = () => {
 
     return (
         <main className="container">
+             <Link to="/" className="btn btn-primary btn-sm">
+                <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>Retour
+            </Link>
             <h1 className="h2 mb-3">Salles</h1>
             {message && <div className={`alert alert-${message.type}`} role="alert">{message.text}</div>}
             <ul className="list-group">

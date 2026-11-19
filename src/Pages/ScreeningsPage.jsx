@@ -21,7 +21,11 @@ const ScreeningsPage = () => {
 
     return (
         <main className="container">
+             <Link to="/" className="btn btn-primary btn-sm">
+                <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>Retour
+            </Link> 
             <h1 className="h2 mb-3">Séances</h1>
+            
             {message && <div className={`alert alert-${message.type}`} role="alert">{message.text}</div>}
             <table className="table table-striped align-middle">
                 <thead><tr><th>Film</th><th>Date</th><th>Salle</th><th>Prix</th><th></th></tr></thead>

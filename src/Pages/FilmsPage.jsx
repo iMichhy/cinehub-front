@@ -22,7 +22,11 @@ const FilmsPage = () => {
     return (
         <main className="container">
             <div className="d-flex justify-content-between align-items-center mb-3">
+                  <Link to="/" className="btn btn-primary btn-sm">
+                <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>Retour
+            </Link>
                 <h1 className="h2 mb-0">Films</h1>
+                
                 <div className="form-check form-switch">
                     <input className="form-check-input" type="checkbox" id="onlyShowing"
                         checked={onlyShowing} onChange={() => setOnlyShowing(!onlyShowing)} />
@@ -49,6 +53,8 @@ const FilmsPage = () => {
                     </div>
                 ))}
             </div>
+
+          
         </main>
     );
 };
