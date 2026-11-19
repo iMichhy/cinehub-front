@@ -15,7 +15,12 @@ import RoomsPage from './Pages/RoomsPage'
 import MyReservationsPage from './Pages/MyReservationsPage'
 import authService from './Services/authServices'
 import AuthWrapper from './Wrappers/AuthWrapper'
-
+import AdminUsersPage from './Pages/Admin/AdminUsersPage'
+import AdminWrapper from './Wrappers/AdminWrapper'
+import AdminFilmsPage from './Pages/Admin/AdminFilmsPage'
+import AdminRoomsPage from './Pages/Admin/AdminRoomsPage'
+import AdminScreeningsPage from './Pages/Admin/AdminScreeningsPage'
+import AdminReservationsPage from './Pages/Admin/AdminReservationsPage'
 
 function App() {
   const [isConnected, setIsConnected] = useState(authService.isConnected());
@@ -38,7 +43,11 @@ function App() {
           <Route path='/rooms' element={<AuthWrapper> <RoomsPage /> </AuthWrapper>} />
           <Route path='/reservations' element={<AuthWrapper> <MyReservationsPage /> </AuthWrapper>} />
 
-        
+          <Route path='/admin/films' element={<AdminWrapper> <AdminFilmsPage /> </AdminWrapper>} />
+          <Route path='/admin/rooms' element={<AdminWrapper> <AdminRoomsPage /> </AdminWrapper>} />
+          <Route path='/admin/screenings' element={<AdminWrapper> <AdminScreeningsPage /> </AdminWrapper>} />
+          <Route path='/admin/reservations' element={<AdminWrapper> <AdminReservationsPage /> </AdminWrapper>} />
+          <Route path='/admin/users' element={<AdminWrapper> <AdminUsersPage /> </AdminWrapper>} />
         </Routes>
       </BrowserRouter>
     </AuthContext.Provider>
