@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import AuthContext from '../Contexts/AuthContext';
 import authServices from '../Services/authServices';
 
@@ -15,38 +15,57 @@ const NavBar = () => {
         navigate('/login');
     };
 
+
+    const item = (to, label) => (
+        <li className="nav-item">
+            <NavLink className="nav-link" to={to} data-bs-dismiss="collapse">{label}</NavLink>
+        </li>
+    );
+
     return (
-        <nav className="navbar bg-body-tertiary mb-4">
-            <div className="container d-flex flex-wrap gap-3 align-items-center">
+        <nav className="navbar navbar-expand-sm bg-dark navbar-dark mb-4">
+            <div className="container-fluid">
                 <Link className="navbar-brand" to="/">CineHub</Link>
 
-                {isConnected ? (
-                    <>
-                        <Link to="/films">Films</Link>
-                        <Link to="/screenings">Séances</Link>
-                        <Link to="/rooms">Salles</Link>
-                        <Link to="/reservations">Mes réservations</Link>
-                        {isAdmin && (
-                            <>
-                                <span className="badge text-bg-warning">Admin</span>
-                                <Link to="/admin/films">Films</Link>
-                                <Link to="/admin/rooms">Salles</Link>
-                                <Link to="/admin/screenings">Séances</Link>
-                                <Link to="/admin/reservations">Réservations</Link>
-                                <Link to="/admin/users">Users</Link>
-                            </>
-                        )}
-                        <div className="ms-auto d-flex align-items-center gap-3">
-                            <Link to="/profile">{user?.us_username}</Link>
-                            <button className="btn btn-outline-secondary btn-sm" onClick={logout}>Déconnexion</button>
-                        </div>
-                    </>
-                ) : (
-                    <div className="ms-auto d-flex gap-3">
-                        <Link to="/login">Connexion</Link>
-                        <Link to="/register">Inscription</Link>
-                    </div>
-                )}
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon" aria-hidden="true"></span>
+                </button>
+
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    {isConnected ? (
+                        <>
+                            <ul className="navbar-nav me-auto">
+                                {item('/films', 'Films')}
+                                {item('/screenings', 'Séances')}
+                                {item('/rooms', 'Salles')}
+                                {item('/reservations', 'Mes réservations')}
+                                {isAdmin && (
+                                    <>
+                                        <li className="nav-item"><span className="badge text-bg-warning">Admin</span></li>
+                                        {item('/admin/films', 'Films')}
+                                        {item('/admin/rooms', 'Salles')}
+                                        {item('/admin/screenings', 'Séances')}
+                                        {item('/admin/reservations', 'Réservations')}
+                                        {item('/admin/users', 'Users')}
+                                    </>
+                                )}
+                            </ul>
+                            <ul className="navbar-nav">
+                                {item('/profile', user?.us_username)}
+                                <li className="nav-item">
+                                    <button className="btn btn-outline-light btn-sm" type="button" onClick={logout} data-bs-dismiss="collapse">
+                                        Déconnexion
+                                    </button>
+                                </li>
+                            </ul>
+                        </>
+                    ) : (
+                        <ul className="navbar-nav ms-auto">
+                            {item('/login', 'Connexion')}
+                            {item('/register', 'Inscription')}
+                        </ul>
+                    )}
+                </div>
             </div>
         </nav>
     );

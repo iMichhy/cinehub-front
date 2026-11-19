@@ -29,7 +29,7 @@ const ScreeningsPage = () => {
                     {screenings.map((sc) => (
                         <tr key={sc.sc_id}>
                             <td>{sc.fi_title}</td>
-                            <td>{formatDate(sc.sc_datetime)}</td>
+                            <td>{sc.sc_datetime}</td>
                             <td>{sc.ro_name}</td>
                             <td>{sc.sc_price} €</td>
                             <td className="text-end">

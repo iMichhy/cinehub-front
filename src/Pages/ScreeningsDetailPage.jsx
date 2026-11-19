@@ -39,7 +39,7 @@ const ScreeningDetailPage = () => {
                 <div className="card shadow-sm">
                     <div className="card-body">
                         <h1 className="h3">{screening.fi_title}</h1>
-                        <p className="mb-1">{formatDate(screening.sc_datetime)}</p>
+                        <p className="mb-1">{screening.sc_datetime}</p>
                         <p className="mb-1">{screening.ro_name} ({screening.ro_capacity} places)</p>
                         <p>{screening.sc_price} € la place</p>
 

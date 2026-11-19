@@ -13,7 +13,6 @@ import ScreeningsPage from './Pages/ScreeningsPage'
 import ScreeningDetailPage from './Pages/ScreeningsDetailPage'
 import RoomsPage from './Pages/RoomsPage'
 import MyReservationsPage from './Pages/MyReservationsPage'
-
 import authService from './Services/authServices'
 import AuthWrapper from './Wrappers/AuthWrapper'
 
@@ -25,9 +24,8 @@ function App() {
   return (
     <AuthContext.Provider value={{ isConnected, setIsConnected, user, setUser }}>
       <BrowserRouter>
-        <NavBar />
+        <NavBar/>
         <Routes>
-
           <Route path='/' element={<HomePage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />

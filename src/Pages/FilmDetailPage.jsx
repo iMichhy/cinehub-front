@@ -59,7 +59,7 @@ const FilmDetailPage = () => {
                     <tbody>
                         {film.screenings.map((sc) => (
                             <tr key={sc.sc_id}>
-                                <td>{formatDate(sc.sc_datetime)}</td>
+                                <td>{sc.sc_datetime}</td>
                                 <td>{sc.ro_name}</td>
                                 <td>{sc.sc_price} €</td>
                                 <td className="text-end">
