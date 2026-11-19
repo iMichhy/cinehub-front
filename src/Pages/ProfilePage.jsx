@@ -111,7 +111,7 @@ const ProfilePage = () => {
                                 <li key={re.re_id} className="list-group-item px-0 d-flex justify-content-between align-items-center gap-3">
                                     <div>
                                         <span className="fw-semibold">{re.fi_title}</span>
-                                        <div className="text-secondary small">{formatDate(re.sc_datetime)} · {re.ro_name}</div>
+                                        <div className="text-secondary small">{re.sc_datetime} · {re.ro_name}</div>
                                     </div>
                                     <span className="badge rounded-pill bg-secondary">{re.re_seats} place{re.re_seats === 1 ? "" : "s"}</span>
                                 </li>

@@ -42,7 +42,7 @@ const MyReservationsPage = () => {
                         {reservations.map((re) => (
                             <tr key={re.re_id}>
                                 <td>{re.fi_title}</td>
-                                <td>{formatDate(re.sc_datetime)}</td>
+                                <td>{re.sc_datetime}</td>
                                 <td>{re.ro_name}</td>
                                 <td>{re.re_seats}</td>
                                 <td>{re.sc_price} €</td>
