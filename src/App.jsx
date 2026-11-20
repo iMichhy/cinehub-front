@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router'
+import { BrowserRouter, Link, Route, Routes, useLocation, useNavigate } from 'react-router'
 import { useState } from 'react'
 import AuthContext from './Contexts/AuthContext'
 import NavBar from './Components/NavBar'
@@ -25,15 +25,21 @@ import AdminReservationsPage from './Pages/Admin/AdminReservationsPage'
 
 function AppContent() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
 
   return (
     <>
       <NavBar />
       {pathname !== '/' && (
         <div className="container">
-          <Link to="/" className="btn btn-primary btn-sm">
+          <button type="button" className="btn btn-primary btn-sm" onClick={handleBack}>
             <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>Retour
-          </Link>
+          </button>
         </div>
       )}
 
