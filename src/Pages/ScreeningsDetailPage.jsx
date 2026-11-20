@@ -34,9 +34,7 @@ const ScreeningDetailPage = () => {
 
     return (
         <main className="container">
-            <Link to="/screenings" className="btn btn-primary btn-sm">
-                <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>Retour
-            </Link>
+    
             {message && <div className={`alert alert-${message.type}`} role="alert">{message.text}</div>}
             {screening && (
                 <div className="card shadow-sm">

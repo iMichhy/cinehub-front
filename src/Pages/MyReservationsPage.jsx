@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
 import reservationServices from '../Services/reservationServices';
 
 
@@ -32,9 +31,6 @@ const MyReservationsPage = () => {
 
     return (
         <main className="container">
-            <Link to="/" className="btn btn-primary btn-sm">
-                <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>Retour
-            </Link>
             <h1 className="h2 mb-3">Mes réservations</h1>
             {message && <div className={`alert alert-${message.type}`} role="alert">{message.text}</div>}
             {reservations.length === 0 ? (

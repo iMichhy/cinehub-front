@@ -8,6 +8,7 @@ const NavBar = () => {
     const navigate = useNavigate();
     const isAdmin = user?.us_role === 'admin';
 
+    
     const logout = () => {
         authServices.logout();
         setIsConnected(false);

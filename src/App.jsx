@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router'
 import { useState } from 'react'
 import AuthContext from './Contexts/AuthContext'
 import NavBar from './Components/NavBar'
@@ -22,6 +22,44 @@ import AdminRoomsPage from './Pages/Admin/AdminRoomsPage'
 import AdminScreeningsPage from './Pages/Admin/AdminScreeningsPage'
 import AdminReservationsPage from './Pages/Admin/AdminReservationsPage'
 
+
+function AppContent() {
+  const { pathname } = useLocation();
+
+  return (
+    <>
+      <NavBar />
+      {pathname !== '/' && (
+        <div className="container">
+          <Link to="/" className="btn btn-primary btn-sm">
+            <i className="bi bi-arrow-left me-2" aria-hidden="true"></i>Retour
+          </Link>
+        </div>
+      )}
+
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<RegisterPage />} />
+
+        <Route path='/profile' element={<AuthWrapper> <ProfilePage /> </AuthWrapper>} />
+        <Route path='/films' element={<AuthWrapper> <FilmsPage /> </AuthWrapper>} />
+        <Route path='/films/:id' element={<AuthWrapper> <FilmDetailPage /> </AuthWrapper>} />
+        <Route path='/screenings' element={<AuthWrapper> <ScreeningsPage /> </AuthWrapper>} />
+        <Route path='/screenings/:id' element={<AuthWrapper> <ScreeningDetailPage /> </AuthWrapper>} />
+        <Route path='/rooms' element={<AuthWrapper> <RoomsPage /> </AuthWrapper>} />
+        <Route path='/reservations' element={<AuthWrapper> <MyReservationsPage /> </AuthWrapper>} />
+
+        <Route path='/admin/films' element={<AdminWrapper> <AdminFilmsPage /> </AdminWrapper>} />
+        <Route path='/admin/rooms' element={<AdminWrapper> <AdminRoomsPage /> </AdminWrapper>} />
+        <Route path='/admin/screenings' element={<AdminWrapper> <AdminScreeningsPage /> </AdminWrapper>} />
+        <Route path='/admin/reservations' element={<AdminWrapper> <AdminReservationsPage /> </AdminWrapper>} />
+        <Route path='/admin/users' element={<AdminWrapper> <AdminUsersPage /> </AdminWrapper>} />
+      </Routes>
+    </>
+  )
+}
+
 function App() {
   const [isConnected, setIsConnected] = useState(authService.isConnected());
   const [user, setUser] = useState(authService.getUser());
@@ -29,26 +67,7 @@ function App() {
   return (
     <AuthContext.Provider value={{ isConnected, setIsConnected, user, setUser }}>
       <BrowserRouter>
-        <NavBar/>
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-
-          <Route path='/profile' element={<AuthWrapper> <ProfilePage /> </AuthWrapper>} />
-          <Route path='/films' element={<AuthWrapper> <FilmsPage /> </AuthWrapper>} />
-          <Route path='/films/:id' element={<AuthWrapper> <FilmDetailPage /> </AuthWrapper>} />
-          <Route path='/screenings' element={<AuthWrapper> <ScreeningsPage /> </AuthWrapper>} />
-          <Route path='/screenings/:id' element={<AuthWrapper> <ScreeningDetailPage /> </AuthWrapper>} />
-          <Route path='/rooms' element={<AuthWrapper> <RoomsPage /> </AuthWrapper>} />
-          <Route path='/reservations' element={<AuthWrapper> <MyReservationsPage /> </AuthWrapper>} />
-
-          <Route path='/admin/films' element={<AdminWrapper> <AdminFilmsPage /> </AdminWrapper>} />
-          <Route path='/admin/rooms' element={<AdminWrapper> <AdminRoomsPage /> </AdminWrapper>} />
-          <Route path='/admin/screenings' element={<AdminWrapper> <AdminScreeningsPage /> </AdminWrapper>} />
-          <Route path='/admin/reservations' element={<AdminWrapper> <AdminReservationsPage /> </AdminWrapper>} />
-          <Route path='/admin/users' element={<AdminWrapper> <AdminUsersPage /> </AdminWrapper>} />
-        </Routes>
+        <AppContent />
       </BrowserRouter>
     </AuthContext.Provider>
   )
